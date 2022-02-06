@@ -1,0 +1,28 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+<div ></div>
+<script type="text/babel">
+
+
+  class Player extends React.Component {
+      render() {
+        return <h1>hello {this.props.name} from {this.props.loc}</h1>
+      }
+  }
+
+  class Name extends React.Component {
+      render() {
+        return <div><Player name='sachin' loc='mumbai'/>
+        <Player name='dhoni' loc='ranchi'/>
+        <Player name='virat' loc='delhi'/>
+      </div>
+      }
+  }
+ 
+  // place content into container using reder function
+  ReactDOM.render(<Name/>, document.getElementsByTagName('div')[0])
+
+</script>
