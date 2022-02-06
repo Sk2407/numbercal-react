@@ -1,0 +1,31 @@
+<script src='babel.min.js'></script>
+<script src='react.development.js'></script>
+<script src='react-dom.development.js'></script>
+
+
+
+<div id='root'></div>
+<script type='text/babel'>
+class Add extends React.Component {
+    f1(){
+        alert("f 1 is called")
+    }
+    render() {
+       return  <div>
+        <p>
+        <b>No1</b> <input/>
+        </p>
+        <p>
+        <b>No2</b> <input/>
+        </p>
+        <p>
+        <input type="button" value='sum' onClick={this.f1}/>
+        </p>
+        <h1></h1>
+        </div>
+    }
+}
+ReactDOM.render(<Add/> , document.getElementById('root'))
+
+
+</script>
