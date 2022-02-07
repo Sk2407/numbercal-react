@@ -1,0 +1,40 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div></div>
+
+<script type="text/babel">
+    class Add extends React.Component {
+        fnAdd(){
+      
+           var n1 =this.refs.n1Ref.value
+           if(!n1 || isNaN(n1)){
+               alert('please enter valid n1 value');
+               return ;
+           }
+           var n2= this.refs.n2Ref.value
+           if(!n2 ||isNaN(n2)){
+               alert('please enter valid n2 value');
+               return;
+           }
+           var sum=Number(n1)+Number(n2);
+           this.refs.resRef.innerText= sum;
+           if(sum>100){
+               this.refs.resRef.style.color='red'
+           }
+           else{
+               this.refs.resRef.style.color='blue'
+           }
+        }
+        render() {
+        return <div>
+        <p><b>No1:</b><input ref='n1Ref'/></p>
+        <p><b>No2:</b><input ref='n2Ref' /></p>
+        <p><input type="button" onClick={this.fnAdd.bind(this)} value="sum"/></p>
+        <h1 ref='resRef'>0</h1>
+        </div>
+        }
+    }
+    ReactDOM.render(<Add/>, document.getElementsByTagName('div')[0])
+</script>
