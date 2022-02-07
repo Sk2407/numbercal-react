@@ -1,0 +1,152 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+<style>
+    .box{
+      
+        height: 50px;
+        width: 50px;
+        border: 1px solid red;
+        display: inline-block;
+        line-height: 50px;
+        text-align: center;
+    }
+</style>
+
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+  
+    class App extends React.Component {
+        render() {
+            return <div className="box">{this.props.val}</div>
+        }
+    }
+
+      class F1 extends React.Component {
+          render() {
+            return <div> <div><App val="1"/> <App val="2"/> <App val="3"/> </div>
+          <div><App val="4"/> <App val="5"/> <App val="6"/> </div>
+          <div><App val="7"/> <App val="8"/> <App val="9"/> </div>
+          </div>
+          }
+      }
+
+    
+    ReactDOM.render(<F1/>, document.getElementById("root"))
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+<style>
+.p_n{
+    color: red;
+    font-size:50px;
+    border: 1px solid darkblue;
+}
+</style>
+<div ></div>
+<script type="text/babel">
+
+    function Sachin() {
+       var content= <div><h1>Sachin kumar</h1><h1>dhoni maurya </h1> <h1>kholi kushwaha</h1> <h1> yuraj kumar</h1></div>
+      return content;
+
+    }
+    ReactDOM.render(<Sachin/> , document.getElementsByTagName('div')[0])
+/*    ReactDOM.render(<Sachin/> , document.getElementsByTagName('div')[0])*/
+</script> -->      
+
+<!-- Q1 Box making--><!--
+<div id="root"></div>
+<style>
+.box{
+    height:50px;
+    width:50px;
+    border:1px solid red;
+    display: inline-block;
+
+}
+</style>
+<script type="text/babel">
+    function Box(){
+        return <div class="box"></div>
+    }
+    function Name() {
+        return  <div> <div><Box/><Box/><Box/></div>
+        <div><Box/><Box/><Box/></div>
+        <div><Box/><Box/><Box/></div>
+        </div>
+    }
+    ReactDOM.render(<Name/>,document.getElementById('root'))
+</script>
+
+complete box making -->
+<!-- Q-2
+<div id="root"></div>
+
+<script type="text/babel">
+    function Name(){
+        return <h1>SACHIN</h1>
+    }
+    function App(){
+
+        return  <div><Name/><Name/><Name/><Name/><Name/></div>
+
+    }
+    ReactDOM.render(<App />, document.getElementById('root'))
+    
+</script>
+-->
+
