@@ -1,0 +1,26 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div></div>
+
+<script type="text/babel">
+class Child extends React.Component {
+    render() {
+        return <div>
+            <p>Child:{this.props.playername}</p>
+            
+        </div>
+    }
+}
+ class Parent extends React.Component {
+     render() {
+         var name='sachin'
+         return <div>
+             <p>Parent:<Child playername={name}/></p>
+         </div>
+     }
+ }
+ReactDOM.render(<Parent/> , document.getElementsByTagName('div')[0])
+
+</script>
