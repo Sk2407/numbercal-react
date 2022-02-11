@@ -6,7 +6,7 @@
 <script type="text/babel">
 
 class Reverse extends React.Component{
-    f1(){
+    f1=()=>{
      let str=this.refs.strRef.value;
      if(Number(str)){
          alert('enter valid string');
@@ -22,7 +22,7 @@ class Reverse extends React.Component{
         return <div>
              <h2>Reverse the string</h2>
              <p><b>Input:</b><input ref='strRef'/></p>    
-             <p><input type="button" value="Result" onClick={this.f1.bind(this)}/> </p>
+             <p><input type="button" value="Result" onClick={this.f1}/> </p>
              <h3 ref='resRef'></h3>
         </div>
     }
