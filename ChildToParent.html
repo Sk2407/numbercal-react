@@ -1,45 +1,53 @@
 <script src="react.development.js"></script>
-<script src="babel.min.js"></script>
 <script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
 
-<div></div>
+<div id="root"></div>
 
 <script type="text/babel">
-// A is child class because this class is acting as component in App class
-class A extends React.Component {
-    fnClick=()=>{
-           let name=this.refs.nameRef.value;
-           this.props.fnSendName(name);
-       }
-    render() {
-      
-        return <div>
-            <h2>Child:</h2>
-            <p><b>Name:</b><input ref='nameRef'/></p>
-             <p><input onClick={this.fnClick} type='button' value='submit'/></p>
-        </div>
-    }
-}
- class App extends React.Component {
-   constructor(){
-       super();
-       this.state={
-           name:'Not yet received'
-       }
-       this.getname=this.getname.bind(this);
-   }
-    getname(data){
-        this.setState({name:data
-        })
-    }
-     render() {
-         
+  // pass the data from child to parent using call back function
+ class B extends React.Component {
+     render(){
          return <div>
-             <h3>Parent:{this.state.name}</h3>
-            <A fnSendName={this.getname}/>
+         <h1>B:{this.props.name}</h1>
          </div>
      }
  }
-ReactDOM.render(<App/> , document.getElementsByTagName('div')[0])
+ 
+  class A extends React.Component {
+      
+      fnClick(){
+          let name=this.refs.RefName.value;
+          this.props.fnSendName(name);
+      }
+      render() {
+         return <div>
+         <h1>Child</h1>
+         <p><b>Name:</b><input ref="RefName"/></p>
+         <button onClick={this.fnClick.bind(this)}>Submit</button>
+         </div>
+      }
+  }
+  class App extends React.Component {
+    constructor() {
+        super();
+        this.state={
+            name:'Not yet received'
+        }
+        this.getName=this.getName.bind(this);
+    }
+         getName(data){
+           this.setState({name:data})
+         }
+
+      render() {
+          return <div> <h1>Parent:</h1>
+          <A fnSendName={this.getName}/>
+          <B name={this.state.name}/>
+            </div>
+      }
+  }
+  ReactDOM.render(<App/>, document.getElementById('root'))
+
 
 </script>
