@@ -1,0 +1,257 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>    
+<script src="babel.min.js"></script>
+<style>
+    ul{
+      list-style-type: none;
+     
+        text-align: right;
+        margin:0;
+        line-height:40px;
+        background:yellow;
+    }
+    ul > li{
+      display:inline;
+      margin-right: 10px;
+      letter-spacing:3px;
+      cursor:pointer;
+      font-weight: bold;
+    }
+    .menu-active{
+        color: red;
+    font-size: 20px;
+    font-style: italic;
+}
+    
+</style>
+<div></div>
+<script type="text/babel">
+class App extends React.Component {
+    constructor(){
+        super();
+        this.state={
+            menuItem:'Home'
+        }
+    }
+    fnMenu(eve) {
+        
+        eve.stopPropagation();
+        if(eve.target.tagName=='UL')return;
+       console.log(eve.target.id)
+       this.setState({
+           menuItem:eve.target.id,
+       })
+    }
+    render(){
+      const  {menuItem}=this.state
+        return <ul onClick={this.fnMenu.bind(this)}>
+        <li id='Home' className={ menuItem=='Home' && 'menu-active'} > Home</li>
+        <li id='About' className={menuItem=='About' && 'menu-active'}>About</li>
+        <li id='Contact' className={menuItem=='Contact' && 'menu-active'}>Contact </li>
+        <li id='Service'  className={ menuItem=='Service' && 'menu-active'}>Service</li>
+        </ul>
+    }
+}
+
+ReactDOM.render(<App/>, document.getElementsByTagName('div')[0])
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>    
+<script src="babel.min.js"></script>
+
+<style>
+    .board{
+        height: 300px;
+        width: 400px;
+        border: 2px solid red ;
+    }
+    .circle{
+        position: absolute;
+        border: 1px solid red;
+        border-radius:50%;
+    }
+</style>
+
+<div></div>
+
+<script type="text/babel">
+
+    function Circle(props){
+        const {s,l,t}=props;
+        return <div className='circle' style={{height:s ,width:s , left:l,top:t }}> 
+                </div>
+    }
+/*
+class Circle extends React.Component {
+    render(){
+        const {s,l,t}=this.props;
+        return <div className='circle' style={{height:s ,width:s , left:l,top:t }}>
+        </div>
+    }
+}
+*/
+const Board=()=>{
+    return <div className='board'>
+    <Circle s='50' l='250' t='50'/>
+    <Circle s='30' l='350' t='130'/>
+    <Circle s='70' l='150' t='200'/>
+    </div>
+}
+function App(){
+    return <div>
+    <Board/></div>
+}
+ReactDOM.render(<App/> , document.getElementsByTagName('div')[0])
+</script>
+
+-->
+
+
+
+<!-- Arrow program
+
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>    
+<script src="babel.min.js"></script>
+
+<style>
+   .Board{
+    height: 300px;
+    border: 1px solid red;
+    position: relative;
+   }
+   #wall{
+    height: 250px;
+    border: 1px solid red;
+    position: absolute;
+    left: 400px;
+    bottom: 24px;
+   }
+   .arrow{
+    width: 100px;
+    border: 2px solid blue;
+    display: inline-block;
+    position: absolute;
+    top: 125px;
+    background: blue;
+}
+   
+</style>
+<div> </div>
+
+<script type="text/babel">
+    class App extends React.Component {
+        constructor(){
+            super();
+            this.state={
+                l:0
+            }
+        }
+        fnShoot(){
+        let interval = setInterval(()=>{
+            this.setState({
+             l:this.state.l+1,
+         })
+         if(this.state.l==300){
+             clearInterval(interval)
+         }
+          },20)
+        
+        }
+
+        render(){
+            return  <div><div  className='Board'>
+            <div className='arrow' style={{left:this.state.l}} > </div>
+            <div id='wall'> </div>
+            </div>
+            <button onClick={this.fnShoot.bind(this)}>Shoot</button>
+            </div>
+        }
+    }
+
+ReactDOM.render(<App/>, document.getElementsByTagName('div')[0]);
+</script>
+
+-->
+
+
+
+<!-- 
+    
+    <script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div></div>
+
+<script type="text/babel">
+class B extends React.Component{
+    render() {
+        return <p>B:{this.props.vae}</p>
+    }
+}
+class Child extends React.Component {
+  
+      fnClick(){
+         let name= this.refs.nameRef.value;
+         this.props.fnSendName(name);
+      }
+       render() {
+       
+           return <div>
+           <h1>Child</h1>
+           <p><b>Name</b><input ref='nameRef'/></p>
+           <input onClick={this.fnClick.bind(this)} type='button' value='submit'/>
+           </div>
+       }
+}
+class Parent extends React.Component {
+     constructor() {
+         super();
+         this.state={
+             name:"not yet received",
+         }
+     }
+      getName(data){
+       this.setState({
+            name:data,
+        })
+      }
+    
+       render() {
+           return <div>
+           <h1>Parent:</h1>
+           <Child fnSendName={this.getName.bind(this)}/>
+           <B vae={this.state.name}/>
+           </div>
+       }
+}
+ReactDOM.render(<Parent/>, document.getElementsByTagName('div')[0]);
+
+</script>
+
+-->
