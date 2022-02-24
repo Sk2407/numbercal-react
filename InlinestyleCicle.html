@@ -1,0 +1,44 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+<style>
+.board{
+    height: 300px;
+    width: 400px;
+    border: 1px solid red;
+    position: relative;
+}
+.circle{
+    position: absolute;
+    border: 1px solid red;
+    border-radius:50%;
+}
+
+</style>
+<div>  </div>
+<script type="text/babel">
+class Circle extends React.Component {
+    render() {
+        const {s,l,t}=this.props;
+        return <div className='circle' style={{width:s , height:s, left:l, top:t}}>
+
+        </div>
+    }
+}
+
+const Board=()=>{
+    return <div>
+    <Circle s='50' l='200' t='50'/>
+
+    <Circle s='30' l='350' t='150'/>
+
+    <Circle s='70' l='200' t='200'/>
+    </div>
+}
+function App(){
+    return <div className='board' >
+    <Board/>
+    </div>
+}
+ReactDOM.render(<App/>, document.getElementsByTagName('div')[0]);
+</script>
