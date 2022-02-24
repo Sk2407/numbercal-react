@@ -17,13 +17,11 @@
 </style>
 <div>  </div>
 <script type="text/babel">
-class Circle extends React.Component {
-    render() {
-        const {s,l,t}=this.props;
+function Circle(props){
+        const {s,l,t}=props;
         return <div className='circle' style={{width:s , height:s, left:l, top:t}}>
-
         </div>
-    }
+    
 }
 
 const Board=()=>{
